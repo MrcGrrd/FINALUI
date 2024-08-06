@@ -12,7 +12,7 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/login', {
+      const response = await axios.post('inalapi-ff21.up.railway.app/api/login', {
         EMAIL_ADD,
         USER_ID
       });
