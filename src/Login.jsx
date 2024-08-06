@@ -1,26 +1,34 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const [EMAIL_ADD, setEmail] = useState(''); // Default value can be added here if needed
-  const [USER_ID, setUserID] = useState(''); // Default value can be added here if needed
+  const [EMAIL_ADD, setEmail] = useState('');
+  const [USER_ID, setUserID] = useState('');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
   
-    // For now, just log the input values instead of making an API call
-    console.log('Submitted:', { EMAIL_ADD, USER_ID });
+    try {
+      const response = await axios.post('https://inalapi-ff21.up.railway.app/api/login', {
+        EMAIL_ADD,
+        USER_ID
+      });
   
-    // Handle login or further logic here
-    // For example, you might check if EMAIL_ADD and USER_ID match some predefined values:
-    if (EMAIL_ADD === 'nsi.onlinenotification@gmail.com' && USER_ID === 'AGA') {
-      console.log('Login successful');
-      navigate('/Approval');
-    } else {
-      setError('Invalid credentials');
-      console.error('Login failed');
+      if (response.status === 200) {
+        // Handle successful login
+        console.log('Login successful:', response.data);
+        navigate('/Approval');
+      } else {
+        // Handle login failure
+        setError('Invalid credentials');
+        console.error('Login failed:', response.data.message);
+      }
+    } catch (error) {
+      setError('An error occurred');
+      console.error('Error:', error);
     }
   };
 
