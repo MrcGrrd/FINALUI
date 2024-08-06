@@ -24,7 +24,6 @@ const Approval = () => {
           act_desc: 'PROD',
           branchcode: 'Head Office',
           remarks: 'Sample Request',
-          approvalStatus: null // Approval status to track
         },
         {
           pr_no: 'PR-00000002',
@@ -32,7 +31,6 @@ const Approval = () => {
           act_desc: 'ACCOUNTING',
           branchcode: 'Head Office',
           remarks: 'Sample Request of Items',
-          approvalStatus: null // Approval status to track
         }
       ];
       setOrders(ordersData);
