@@ -17,7 +17,7 @@ const Approval = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.1.5/api/approval');
+        const response = await axios.get('https://192.168.1.5/api/approval');
         setOrders(response.data); 
       } catch (error) {
         console.error(error);
