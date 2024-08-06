@@ -15,6 +15,8 @@ function App() {
     });
   };
 
+  var cors = require('cors');
+
   const handleSubmit = async (e) => {
     e.preventDefault();
   
@@ -39,6 +41,7 @@ function App() {
     }
   };
 
+  App.use(cors())
   return (
     <div className="selection:bg-rose-500 selection:text-white">
       <div className="min-h-screen bg-gray flex justify-center items-center">

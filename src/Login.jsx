@@ -3,8 +3,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const [EMAIL_ADD, setEmail] = useState('');
-  const [USER_ID, setUserID] = useState('');
+  const [EMAIL_ADD, setEmail] = useState('nsi.onlinenotification@gmail.com'); // Default email value
+  const [USER_ID, setUserID] = useState('AGA'); // Default user ID value
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
