@@ -12,7 +12,7 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.post('https://naysaapproval.vercel.app/inalapi-ff21.up.railway.app/api/login', data,{
+      const response = await axios.post('https://inalapi-ff21.up.railway.app/api/login', {
         EMAIL_ADD,
         USER_ID
       });
@@ -20,7 +20,7 @@ const Login = () => {
       if (response.status === 200) {
         // Handle successful login
         console.log('Login successful:', response.data);
-        navigate('/Approval')
+        navigate('/Approval');
       } else {
         // Handle login failure
         setError('Invalid credentials');
@@ -31,7 +31,6 @@ const Login = () => {
       console.error('Error:', error);
     }
   };
-
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -55,7 +54,7 @@ const Login = () => {
               User ID
             </label>
             <input
-              type="userid"
+              type="text"
               value={USER_ID}
               onChange={(e) => setUserID(e.target.value)}
               className="w-full px-4 py-2 mt-2 text-gray-700 bg-gray-200 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
