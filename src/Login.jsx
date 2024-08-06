@@ -10,13 +10,13 @@ const Login = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     try {
       const response = await axios.post('https://inalapi-ff21.up.railway.app/api/login', {
         EMAIL_ADD,
         USER_ID
       });
-
+  
       if (response.status === 200) {
         // Handle successful login
         console.log('Login successful:', response.data);
