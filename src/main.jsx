@@ -4,7 +4,7 @@ import Approval from './Approval.jsx';
 import './App.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  <React.StrictMode>
     <Approval />
-  </StrictMode>,
+  </React.StrictMode>,
 );
