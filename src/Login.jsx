@@ -57,7 +57,7 @@ const Login = () => {
             <input
               type="userid"
               value={USER_ID}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => setUserID(e.target.value)}
               className="w-full px-4 py-2 mt-2 text-gray-700 bg-gray-200 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
               required
             />
