@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle, faSearch } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
@@ -15,16 +14,31 @@ const Approval = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('http://127.0.0.1:8000/api/approval');
-        setOrders(response.data); 
-      } catch (error) {
-        console.error(error);
-      }
+    // Simulate loading user data after login
+    const loadOrders = () => {
+      // Example orders data; replace this with actual data retrieval logic
+      const ordersData = [
+        {
+          pr_no: 'PR-00000001',
+          pr_date: '2024-07-10',
+          act_desc: 'PROD',
+          branchcode: 'Head Office',
+          remarks: 'Sample Request',
+          approvalStatus: null // Approval status to track
+        },
+        {
+          pr_no: 'PR-00000002',
+          pr_date: '2024-07-10',
+          act_desc: 'ACCOUNTING',
+          branchcode: 'Head Office',
+          remarks: 'Sample Request of Items',
+          approvalStatus: null // Approval status to track
+        }
+      ];
+      setOrders(ordersData);
     };
 
-    fetchData();
+    loadOrders(); // Call function to set orders on component mount or login
   }, []);
 
   const handleApproveClick = () => {
@@ -56,7 +70,7 @@ const Approval = () => {
     }
 
     setOrders(orders.map(order =>
-      order === selectedOrder ? { ...order, approvalStatus: 'Rejected' } : order
+      order === selectedOrder ? { ...order, approvalStatus: 'Rejected', remarks } : order
     ));
     setShowRejectModal(false);
     setSelectedOrder(null);
@@ -148,7 +162,7 @@ const Approval = () => {
               <th className="px-4 py-2 border-b">Responsibility Center</th>
               <th className="px-4 py-2 border-b">Branch</th>
               <th className="px-4 py-2 border-b">Remarks</th>
-              <th className="px-4 py-2 border-b">status</th>
+              <th className="px-4 py-2 border-b">Status</th>
               <th className="px-4 py-2 border-b"></th>
             </tr>
           </thead>
