@@ -12,7 +12,7 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.post('https://inalapi-ff21.up.railway.app//api/login', {
+      const response = await axios.post('https://naysaapproval.vercel.app/inalapi-ff21.up.railway.app/api/login', data,{
         EMAIL_ADD,
         USER_ID
       });
@@ -31,7 +31,7 @@ const Login = () => {
       console.error('Error:', error);
     }
   };
-  
+
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
