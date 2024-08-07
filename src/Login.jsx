@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import https from 'https';
+
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 const Login = () => {
   const [EMAIL_ADD, setEmail] = useState('');
@@ -12,9 +15,13 @@ const Login = () => {
     event.preventDefault();
 
     try {
+      // Axios request configuration
+      const httpsAgent = new https.Agent({ rejectUnauthorized: false });
+      
       const response = await axios.post(
         'https://192.168.1.10/api/login', 
-        { EMAIL_ADD, USER_ID }
+        { EMAIL_ADD, USER_ID },
+        { httpsAgent }
       );
 
       if (response.status === 200) {
