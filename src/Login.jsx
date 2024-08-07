@@ -15,6 +15,11 @@ const Login = () => {
       const response = await axios.post('https://192.168.1.10/api/login', {
         EMAIL_ADD,
         USER_ID
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        }
       });
   
       if (response.status === 200) {
