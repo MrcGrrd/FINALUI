@@ -12,7 +12,7 @@ const Login = () => {
     event.preventDefault();
   
     try {
-      const response = await axios.post('https://192.168.1.10/api/login', {
+      const response = await axios.post('https://finalapi-kpcs.vercel.app/api/login', {
         EMAIL_ADD,
         USER_ID
       }, {
