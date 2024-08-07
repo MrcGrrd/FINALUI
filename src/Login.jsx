@@ -12,7 +12,7 @@ const Login = () => {
     event.preventDefault();
   
     try {
-      const response = await axios.post('https://192.168.1.5/api/login', {
+      const response = await axios.post('https://192.168.1.10/api/login', {
         EMAIL_ADD,
         USER_ID
       });
