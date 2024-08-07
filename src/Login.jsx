@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
@@ -9,24 +10,21 @@ const Login = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     try {
-      const response = await fetch('https://192.168.1.10/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ EMAIL_ADD, USER_ID }),
+      const response = await axios.post('/api/login', {
+        EMAIL_ADD,
+        USER_ID
       });
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log('Login successful:', data);
+  
+      if (response.status === 200) {
+        // Handle successful login
+        console.log('Login successful:', response.data);
         navigate('/Approval');
       } else {
-        const data = await response.json();
+        // Handle login failure
         setError('Invalid credentials');
-        console.error('Login failed:', data.message);
+        console.error('Login failed:', response.data.message);
       }
     } catch (error) {
       setError('An error occurred');
