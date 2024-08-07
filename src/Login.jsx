@@ -7,30 +7,20 @@ const Login = () => {
   const [USER_ID, setUserID] = useState('');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const axios = require('axios');
-  const https = require('https');
-
-const agent = new https.Agent({  
-  rejectUnauthorized: false
-});
-
-axios.post('https://192.168.1.10/api/login', data, { httpsAgent: agent })
-  .then(response => {
-    console.log(response.data);
-  })
-  .catch(error => {
-    console.error(error);
-  });
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     try {
-      const response = await axios.post('https://192.168.1.10/api/login', {
-        EMAIL_ADD,
-        USER_ID
-      });
-  
+      // Axios request configuration
+      const httpsAgent = new (require('https')).Agent({ rejectUnauthorized: false });
+      
+      const response = await axios.post(
+        'https://192.168.1.10/api/login', 
+        { EMAIL_ADD, USER_ID },
+        { httpsAgent }
+      );
+
       if (response.status === 200) {
         // Handle successful login
         console.log('Login successful:', response.data);
