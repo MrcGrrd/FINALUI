@@ -23,7 +23,7 @@ const Login = () => {
       });
   
       if (response.status === 200) {
-        // Handle successful login
+
         console.log('Login successful:', response.data);
         navigate('/Approval');
       } else {
