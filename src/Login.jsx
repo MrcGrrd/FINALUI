@@ -13,7 +13,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        '/api/login', 
+        'https://192.168.1.10/api/login', 
         { EMAIL_ADD, USER_ID }
       );
 
