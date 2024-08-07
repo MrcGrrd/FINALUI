@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import https from 'https';
-
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 const Login = () => {
   const [EMAIL_ADD, setEmail] = useState('');
@@ -15,23 +11,22 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      // Axios request configuration
-      const httpsAgent = new https.Agent({ rejectUnauthorized: false });
-      
-      const response = await axios.post(
-        'https://192.168.1.10/api/login', 
-        { EMAIL_ADD, USER_ID },
-        { httpsAgent }
-      );
+      const response = await fetch('https://192.168.1.10/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ EMAIL_ADD, USER_ID }),
+      });
 
-      if (response.status === 200) {
-        // Handle successful login
-        console.log('Login successful:', response.data);
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Login successful:', data);
         navigate('/Approval');
       } else {
-        // Handle login failure
+        const data = await response.json();
         setError('Invalid credentials');
-        console.error('Login failed:', response.data.message);
+        console.error('Login failed:', data.message);
       }
     } catch (error) {
       setError('An error occurred');
