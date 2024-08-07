@@ -12,13 +12,9 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      // Axios request configuration
-      const httpsAgent = new (require('https')).Agent({ rejectUnauthorized: false });
-      
       const response = await axios.post(
-        'https://192.168.1.10/api/login', 
-        { EMAIL_ADD, USER_ID },
-        { httpsAgent }
+        '/api/login', 
+        { EMAIL_ADD, USER_ID }
       );
 
       if (response.status === 200) {
