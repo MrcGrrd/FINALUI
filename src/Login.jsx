@@ -12,7 +12,7 @@ const Login = () => {
     event.preventDefault();
   
     try {
-      const response = await axios.post('https://inalapi-ff21.up.railway.app/api/login', {
+      const response = await axios.post('https://finalapi-kpcs.vercel.app/api/api/login', {
         EMAIL_ADD,
         USER_ID
       });
