@@ -7,6 +7,6 @@ import './App.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Approval/>
+    <Login/>
   </React.StrictMode>,
 );
