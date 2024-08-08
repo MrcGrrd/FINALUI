@@ -92,7 +92,7 @@ const Approval = () => {
 
   const filteredOrders = orders.filter(order => {
     if (activeTab === 'TO REVIEW') {
-      return order.pr_stat === 'O'; // Adjust this logic based on your approvalStatus or pr_stat
+      return order.pr_stat === 'O';
     }
     return true;
   }).filter(order => 
