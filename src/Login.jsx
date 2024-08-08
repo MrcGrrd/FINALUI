@@ -12,18 +12,13 @@ const Login = () => {
     event.preventDefault();
   
     try {
-      const response = await axios.post('https://finalapi-kpcs.vercel.app/api/login', {
+      const response = await axios.post('https://192.168.1.10/api/login', {
         EMAIL_ADD,
         USER_ID
-      }, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        }
       });
   
       if (response.status === 200) {
-
+        // Handle successful login
         console.log('Login successful:', response.data);
         navigate('/Approval');
       } else {

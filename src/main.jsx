@@ -7,6 +7,11 @@ import './App.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Login/>
-  </React.StrictMode>,
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/approval" element={<Approval />} />
+      </Routes>
+    </Router>
+  </React.StrictMode>
 );
